@@ -27,14 +27,14 @@ func init() {
 }
 
 // helper functions
-func PrintColoredDashes(dashCount int, color string) {
+func PrintColoredDashes(dashCount int, color string) string {
 	result := ansi.Color(strings.Repeat("-", dashCount), color)
-	fmt.Println(result)
+	return fmt.Sprint(result)
 }
 
-func PrintColoredText(text string, color string) {
+func PrintColoredText(text string, color string) string {
 	result := ansi.Color(text, color)
-	fmt.Println(result)
+	return fmt.Sprint(result)
 }
 
 func ClearScreen() {
