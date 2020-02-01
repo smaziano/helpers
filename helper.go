@@ -1,12 +1,14 @@
 package helper
 
 import (
+	"bufio"
 	"fmt"
-	"github.com/mgutz/ansi"
 	"os"
 	"os/exec"
 	"runtime"
 	"strings"
+
+	"github.com/mgutz/ansi"
 )
 
 // initial setup
@@ -32,9 +34,18 @@ func PrintColoredDashes(dashCount int, color string) string {
 	return fmt.Sprint(result)
 }
 
+// PrintColoredText prints colored text
 func PrintColoredText(text string, color string) string {
 	result := ansi.Color(text, color)
 	return fmt.Sprint(result)
+}
+
+// ReadCommand reads commands from cli
+func ReadCommand() string {
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	option := scanner.Text()
+	return option
 }
 
 func ClearScreen() {
