@@ -60,11 +60,24 @@ func ClearScreen() {
 
 // ClearScreenOrPreviousScreenText - 'mandatory' on vscode
 func ClearScreenOrPreviousScreenText() {
-	fmt.Println(PrintColoredDashes(40, "white"))
+	fmt.Println(PrintColoredDashes(52, "white"))
 	fmt.Print(PrintColoredText("(c) ", "blue"))
-	fmt.Print(PrintColoredText("Limpar a tela", "white"))
+	fmt.Print(PrintColoredText("Clear screen", "white"))
 	fmt.Print(PrintColoredText(" | ", "white"))
-	fmt.Print(PrintColoredText("(q) ", "blue"))
-	fmt.Println(PrintColoredText("Menu anterior", "white"))
+	fmt.Print(PrintColoredText("(p) ", "blue"))
+	fmt.Println(PrintColoredText("Previous menu", "white"))
 	fmt.Print(">> ")
+}
+
+// ListMenuItem - 'mandatory' on vscode
+func ListMenuItem(command string, description string) {
+	fmt.Print(PrintColoredText("("+command+") ", "blue"))
+	fmt.Println(PrintColoredText(description, "white"))
+}
+
+// Loading - 'mandatory' on vscode
+func Loading() {
+	fmt.Println(PrintColoredDashes(52, "cyan"))
+	fmt.Println(PrintColoredText("Loading...", "cyan"))
+	fmt.Println(PrintColoredDashes(52, "cyan"))
 }
