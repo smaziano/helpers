@@ -28,16 +28,19 @@ func init() {
 	}
 }
 
+// PrintColoredDashes - 'mandatory' on vscode
 func PrintColoredDashes(dashCount int, color string) string {
 	result := ansi.Color(strings.Repeat("-", dashCount), color)
 	return fmt.Sprint(result)
 }
 
+// PrintColoredText - 'mandatory' on vscode
 func PrintColoredText(text string, color string) string {
 	result := ansi.Color(text, color)
 	return fmt.Sprint(result)
 }
 
+// ReadCommand - 'mandatory' on vscode
 func ReadCommand() string {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
@@ -45,6 +48,7 @@ func ReadCommand() string {
 	return option
 }
 
+// ClearScreen - 'mandatory' on vscode
 func ClearScreen() {
 	value, ok := clear[runtime.GOOS]
 	if ok {
@@ -54,7 +58,8 @@ func ClearScreen() {
 	}
 }
 
-func clearScreenOrPreviousScreenText() {
+// ClearScreenOrPreviousScreenText - 'mandatory' on vscode
+func ClearScreenOrPreviousScreenText() {
 	fmt.Println(PrintColoredDashes(40, "white"))
 	fmt.Print(PrintColoredText("(c) ", "blue"))
 	fmt.Print(PrintColoredText("Limpar a tela", "white"))
