@@ -28,19 +28,16 @@ func init() {
 	}
 }
 
-// helper functions
 func PrintColoredDashes(dashCount int, color string) string {
 	result := ansi.Color(strings.Repeat("-", dashCount), color)
 	return fmt.Sprint(result)
 }
 
-// PrintColoredText prints colored text
 func PrintColoredText(text string, color string) string {
 	result := ansi.Color(text, color)
 	return fmt.Sprint(result)
 }
 
-// ReadCommand reads commands from cli
 func ReadCommand() string {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
@@ -55,4 +52,14 @@ func ClearScreen() {
 	} else {
 		panic("Your plataform is unsuported! I can't clear terminal screen")
 	}
+}
+
+func clearScreenOrPreviousScreenText() {
+	fmt.Println(PrintColoredDashes(40, "white"))
+	fmt.Print(PrintColoredText("(c) ", "blue"))
+	fmt.Print(PrintColoredText("Limpar a tela", "white"))
+	fmt.Print(PrintColoredText(" | ", "white"))
+	fmt.Print(PrintColoredText("(q) ", "blue"))
+	fmt.Println(PrintColoredText("Menu anterior", "white"))
+	fmt.Print(">> ")
 }
