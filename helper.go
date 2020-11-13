@@ -87,6 +87,24 @@ func Loading() {
 	fmt.Println(PrintColoredDashes(108, "cyan"))
 }
 
+func WindowHeaderWarning(message string) {
+	fmt.Println(PrintColoredDashes(108, "green"))
+	fmt.Println(PrintColoredText(message, "yellow"))
+	fmt.Println(PrintColoredDashes(108, "green"))
+}
+
+func WindowHeaderSuccess(message string) {
+	fmt.Println(PrintColoredDashes(108, "green"))
+	fmt.Println(PrintColoredText(message, "green"))
+	fmt.Println(PrintColoredDashes(108, "green"))
+}
+
+func WindowHeaderError(message string) {
+	fmt.Println(PrintColoredDashes(108, "green"))
+	fmt.Println(PrintColoredText(message, "red"))
+	fmt.Println(PrintColoredDashes(108, "green"))
+}
+
 // GetTypeAttributes - Get Fields
 func GetTypeAttributes(azureResource interface{}) (reflect.Type, int) {
 	convertedType := reflect.ValueOf(azureResource).Elem()
