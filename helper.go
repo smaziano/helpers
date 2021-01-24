@@ -21,12 +21,14 @@ func init() {
 	clear["linux"] = func() {
 		cmd := exec.Command("clear")
 		cmd.Stdout = os.Stdout
-		cmd.Run()
+		err := cmd.Run()
+		CheckError(err)
 	}
 	clear["windows"] = func() {
 		cmd := exec.Command("cmd", "/c", "cls")
 		cmd.Stdout = os.Stdout
-		cmd.Run()
+		err := cmd.Run()
+		CheckError(err)
 	}
 }
 
@@ -182,7 +184,7 @@ func GetResourceMetada(resourceGroups interface{}) ([]string, []string) {
 }
 
 // DisplayTable - Show Table Contents
-func displayTable(resourceGroups interface{}) {
+func DisplayTable(resourceGroups interface{}) {
 	table := simpletable.New()
 	fields, values := GetAllFieldsAndValues(resourceGroups)
 	var cells []*simpletable.Cell
@@ -203,4 +205,10 @@ func displayTable(resourceGroups interface{}) {
 
 	table.SetStyle(simpletable.StyleDefault)
 	fmt.Println(table.String())
+}
+
+func CheckError(e error) {
+	if e != nil {
+		panic(e)
+	}
 }
