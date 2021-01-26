@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"github.com/alexeyco/simpletable"
+	"github.com/howeyc/gopass"
 	"github.com/mgutz/ansi"
 )
 
@@ -50,6 +51,12 @@ func ReadCommand() string {
 	scanner.Scan()
 	option := scanner.Text()
 	return option
+}
+
+// ReadCommand - 'mandatory' on vscode
+func ReadCommandPassword() string {
+	scanner, _ := gopass.GetPasswdMasked()
+	return string(scanner)
 }
 
 // ClearScreen - 'mandatory' on vscode
